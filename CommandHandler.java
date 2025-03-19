@@ -1,7 +1,5 @@
-package net.minipandi.admintools.utils;
-
 import net.kyori.adventure.text.minimessage.MiniMessage;
-import net.minipandi.admintools.Main;
+import net.minipandi.lobby.Main;
 import org.bukkit.Bukkit;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
@@ -43,14 +41,14 @@ public abstract class CommandHandler implements CommandExecutor, TabCompleter {
         }
 
         @Override
-        public boolean execute(@NotNull CommandSender commandSender, @NotNull String s, @NotNull String[] strings) {
-            if (commandSender instanceof Player player) {
+        public boolean execute(@NotNull CommandSender sender, @NotNull String label, @NotNull String[] args) {
+            if (sender instanceof Player player) {
                 if (!player.hasPermission(permission)) {
                     player.sendMessage(MiniMessage.miniMessage().deserialize(permissionMessage));
                     return true;
                 }
             }
-            return CommandHandler.this.onCommand(commandSender, this, s, strings);
+            return CommandHandler.this.onCommand(sender, this, label, args);
         }
     }
 
