@@ -1,5 +1,5 @@
 import net.kyori.adventure.text.minimessage.MiniMessage;
-import net.minipandi.lobby.Main;
+import net.minipandi.event.Main;
 import org.bukkit.Bukkit;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
@@ -53,8 +53,8 @@ public abstract class CommandHandler implements CommandExecutor, TabCompleter {
     }
 
     @Override
-    public abstract boolean onCommand(@NotNull CommandSender commandSender, @NotNull Command command, @NotNull String s, @NotNull String[] strings);
+    public abstract boolean onCommand(@NotNull CommandSender sender,@NotNull Command command, @NotNull String label, @NotNull String[] args);
 
     @Override
-    public abstract List<String> onTabComplete(@NotNull CommandSender commandSender, @NotNull Command command, @NotNull String s, @NotNull String[] strings);
+    public abstract List<String> onTabComplete(@NotNull CommandSender sender,@NotNull Command command, @NotNull String label, @NotNull String[] args);
 }
